@@ -6,6 +6,20 @@
 
   if (!galleryImages.length || !lightbox) return;
 
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-revealed', entry.isIntersecting);
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px 10% 0px' });
+
+    galleryImages.forEach((image, index) => {
+      image.classList.add('gallery-reveal');
+      image.style.setProperty('--gallery-reveal-delay', `${(index % 6) * 80}ms`);
+      revealObserver.observe(image);
+    });
+  }
+
   const lightboxImage = lightbox.querySelector('.lightbox-image');
   const closeButton = lightbox.querySelector('.lightbox-close');
   const previousButton = lightbox.querySelector('.lightbox-previous');
