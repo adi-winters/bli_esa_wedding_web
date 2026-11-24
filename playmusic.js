@@ -62,6 +62,8 @@
     });
   };
 
+  startMusicOnce();
+
   const coverSection = document.querySelector('.cover-section');
   if ('IntersectionObserver' in window && coverSection) {
     const coverObserver = new IntersectionObserver(([entry]) => {
