@@ -59,7 +59,6 @@ body {
 .cover-section {
   height: 100vh;
   height: 100svh;
-  min-height: 0;
   padding: 0;
   flex: 0 0 100vh;
   flex-basis: 100svh;
@@ -83,12 +82,17 @@ body {
   object-position: center 48%;
 }
 .cover-content {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  width: min(100%, 900px);
-  padding: 50px 20px;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 60px 20px;
 }
 .light-eyebrow {
+  margin-bottom: 4px;
   color: rgb(255 255 255 / 82%);
   font-size: 20px;
 }
@@ -104,7 +108,7 @@ body {
   font-style: italic;
 }
 .cover-invitation {
-  margin: 65px auto 0;
+  margin: auto auto 0;
   color: rgb(255 255 255 / 94%);
   font-size: 20px;
   line-height: 1.8;
@@ -112,7 +116,7 @@ body {
 }
 
 .cover-invitation p {
-  margin: 0 0 8px;
+  margin: 0 0 5px;
 }
 .cover-invitation .name-invitator {
   font-size: 20px;
@@ -125,6 +129,11 @@ body {
   width: min(124px, 35vw);
   height: auto;
   margin: 0 auto 24px;
+}
+.opening-section {
+  min-height: 92svh;
+  padding: 60px 24px;
+  align-items: flex-start;
 }
 .opening-copy {
   max-width: 610px;
@@ -179,8 +188,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  padding: 12px 6px;
+  gap: 4px;
+  padding: 10px 6px;
   border-right: 4px solid #000;
   color: #000;
   letter-spacing: 0;
@@ -193,13 +202,13 @@ body {
   line-height: 1.2;
 }
 .event-panel .event-year {
-  margin-top: 12px;
+  margin-top: 0;
 }
 .event-panel .event-date strong {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateY(-5px);
+  transform: none;
   color: #000;
   font-size: clamp(84px, 16vw, 140px);
   font-weight: 400;
@@ -254,13 +263,18 @@ body {
 
 /* 03 — Couple details */
 .couple-section {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
   isolation: isolate;
   background: #303030;
 }
 .couple-section .section-container {
   display: grid;
-  min-height: calc(100vh - 160px);
-  min-height: calc(100svh - 160px);
+  min-height: calc(100vh - 48px);
+  min-height: calc(100dvh - 48px);
   grid-template-rows: auto 1fr auto;
   align-items: center;
 }
@@ -287,6 +301,10 @@ body {
   font-weight: 400;
 }
 .couple-details {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: space-between;
   width: min(100%, 680px);
   margin: 0 auto;
 }
@@ -317,7 +335,7 @@ body {
   font-weight: 600;
 }
 .couple-and {
-  margin: 40px 0;
+  margin: 12px 0;
   color: #fff;
   font-size: 24px;
   font-style: italic;
@@ -331,7 +349,7 @@ body {
 }
 .couple-section .hashtag {
   margin: 0 0 12px;
-  transform: translateY(50px);
+  transform: translateY(8px);
 }
 
 /* 04 — Verse and gallery */
@@ -601,6 +619,13 @@ body {
   .cover-section, .closing-section {
     min-height: 88svh;
   }
+  .cover-section {
+    height: 100vh;
+    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0;
+  }
   .page-number {
     right: 20px;
     bottom: 17px;
@@ -620,8 +645,8 @@ body {
   }
   /* Section 2 — Invitation and event details */
   .opening-section {
-    padding-top: 48px;
-    padding-bottom: 60px;
+    min-height: 92svh;
+    padding: 36px 20px 44px;
   }
   .opening-copy {
     font-size: 20px;
@@ -701,17 +726,27 @@ body {
   .cover-names {
     font-size: clamp(42px, 11vw, 68px);
   }
+  .cover-content {
+    padding: 32px 12px;
+  }
   .event-panel .event-date strong {
     font-size: clamp(56px, 18vw, 90px);
   }
   .event-details .event-time {
     padding: 12px 3px;
-    font-size: clamp(12px, 3.4vw, 18px);
+    font-size: clamp(14px, 3.6vw, 19px);
     white-space: normal;
   }
   .couple-section {
-    padding-top: 20px;
-    padding-bottom: 60px;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 16px;
+  }
+  .couple-section .section-container {
+    min-height: calc(100vh - 32px);
+    min-height: calc(100dvh - 32px);
   }
   .verse-section .gallery-grid img {
     height: auto;
@@ -739,7 +774,16 @@ body {
 /* Padding refinement up to 575.98px. */
 @media (max-width: 575.98px) {
   .couple-section {
-    min-height: 95svh;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 16px;
+  }
+
+  .couple-section .section-container {
+    min-height: calc(100vh - 32px);
+    min-height: calc(100dvh - 32px);
   }
 
   .couple-name {
@@ -796,7 +840,7 @@ body {
   }
 
   .event-details .event-time {
-    font-size: clamp(14px, 3.8vw, 19px);
+    font-size: clamp(15px, 4vw, 20px);
   }
 
   .event-venue h3 {
@@ -804,7 +848,7 @@ body {
   }
 
   .event-venue p {
-    font-size: clamp(15px, 3.5vw, 22px);
+    font-size: clamp(16px, 3.8vw, 22px);
   }
 
   .verse-section .collage-grid {
@@ -825,6 +869,12 @@ body {
   }
 }
 
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .event-venue p {
+    font-size: clamp(16px, 3.2vw, 21px);
+  }
+}
+
 @media (min-width: 992px) {
   .verse-section {
     padding-top: 50px;
@@ -841,6 +891,20 @@ body {
 
   .envelope-section .section-title {
     margin-top: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .opening-section {
+    width: 100%;
+    padding: 24px 16px 28px;
+  }
+
+  .opening-section .section-container {
+    width: 100%;
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -1044,6 +1108,23 @@ body {
 .gallery-grid img,
 .collage-grid img {
   cursor: zoom-in;
+}
+
+.gallery-reveal {
+  opacity: 0;
+  transition: opacity .75s cubic-bezier(.22, .61, .36, 1);
+  transition-delay: var(--gallery-reveal-delay, 0ms);
+}
+
+.gallery-reveal.is-revealed {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-reveal {
+    transition-duration: .25s !important;
+    transition-delay: 0ms !important;
+  }
 }
 
 .gallery-grid img:focus-visible,
